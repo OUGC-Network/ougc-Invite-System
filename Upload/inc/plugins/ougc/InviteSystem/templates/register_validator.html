@@ -1,0 +1,26 @@
+<script>
+    $(function () {
+        $('#invite_code').rules('add', {
+            required: {$required},
+            maxlength: {$length},
+            remote: {
+                url: 'xmlhttp.php?action=ougc_invite_system',
+                type: 'post',
+                dataType: 'json',
+                data:
+                    {
+                        email: function () {
+                            return $('#email').val();
+                        },
+                        my_post_key: my_post_key
+                    },
+            },
+            messages: {
+                required: '{$lang->ougc_invite_system_register_error_required}',
+                minlength: '',
+                maxlength: '{$lang->ougc_invite_system_register_error_size}',
+                remote: '{$lang->ougc_invite_system_register_error_invalid}'
+            }
+        });
+    });
+</script>

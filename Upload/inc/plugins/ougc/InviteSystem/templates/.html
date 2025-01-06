@@ -1,0 +1,22 @@
+<html>
+<head>
+    <title>{$mybb->settings['bbname']} - {$pageTitle}</title>
+    {$headerinclude}
+</head>
+<body>
+{$header}
+<table width="100%" border="0" align="center">
+    <tr>
+        {$navigation}
+        <td valign="top">
+            {$errors}
+            {$currentUserName}
+            {$content}
+            {$form}
+            {$filterPanel}
+        </td>
+    </tr>
+</table>
+{$footer}
+</body>
+</html>
