@@ -311,8 +311,8 @@ function pluginInformation(): array
         'website' => 'https://ougc.network',
         'author' => 'Omar G.',
         'authorsite' => 'https://ougc.network',
-        'version' => '1.8.1',
-        'versioncode' => 1801,
+        'version' => '1.8.30',
+        'versioncode' => 1830,
         'compatibility' => '18*',
         'codename' => 'ougc_invite_system',
         'pl' => [
