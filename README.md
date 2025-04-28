@@ -81,7 +81,6 @@ A setup that meets the following requirements is necessary to use this plugin.
    │ │ │ │ │ ├── register
    │ │ │ │ │ │ ├── init.php
    │ │ │ │ ├── templates
-   │ │ │ │ │ ├── .html
    │ │ │ │ │ ├── content.html
    │ │ │ │ │ ├── content_button_deactivate.html
    │ │ │ │ │ ├── content_button_delete.html
@@ -107,9 +106,11 @@ A setup that meets the following requirements is necessary to use this plugin.
    │ │ │ │ │ ├── form_usergroup_item.html
    │ │ │ │ │ ├── form_users.html
    │ │ │ │ │ ├── modcp_nav.html
+   │ │ │ │ │ ├── moderatorControlPanel.html
    │ │ │ │ │ ├── register.html
    │ │ │ │ │ ├── register_agreement.html
    │ │ │ │ │ ├── register_validator.html
+   │ │ │ │ │ ├── userControlPanel.html
    │ │ │ │ │ ├── usercp_nav.html
    │ │ │ │ ├── admin.php
    │ │ │ │ ├── core.php

@@ -66,7 +66,7 @@ function global_start(): bool
 
     if (defined('THIS_SCRIPT')) {
         if (THIS_SCRIPT == 'usercp.php' || THIS_SCRIPT == 'modcp.php') {
-            $templatelist .= ', ougcinvitesystem_usercp_nav, ougcinvitesystem_content_button_deactivate, ougcinvitesystem_content_button_delete, ougcinvitesystem_content_buttons, ougcinvitesystem_filter, ougcinvitesystem_content_multipage, ougcinvitesystem_content_points_thead, ougcinvitesystem_content_points_column, ougcinvitesystem_content_row, ougcinvitesystem_form_code, ougcinvitesystem_form_email, ougcinvitesystem_form_usergroup_item, ougcinvitesystem_form_usergroup, ougcinvitesystem_form_stock_unlimited, ougcinvitesystem_form_stock, ougcinvitesystem_form_expire, ougcinvitesystem_form_multiple, ougcinvitesystem_form_users, ougcinvitesystem_form_points, ougcinvitesystem_form, ougcinvitesystem_content, ougcinvitesystem, ougcinvitesystem_modcp_nav, ougcinvitesystem_filter_username, ougcinvitesystem_content_empty,ougcinvitesystem_current';
+            $templatelist .= ', ougcinvitesystem_usercp_nav, ougcinvitesystem_content_button_deactivate, ougcinvitesystem_content_button_delete, ougcinvitesystem_content_buttons, ougcinvitesystem_filter, ougcinvitesystem_content_multipage, ougcinvitesystem_content_points_thead, ougcinvitesystem_content_points_column, ougcinvitesystem_content_row, ougcinvitesystem_form_code, ougcinvitesystem_form_email, ougcinvitesystem_form_usergroup_item, ougcinvitesystem_form_usergroup, ougcinvitesystem_form_stock_unlimited, ougcinvitesystem_form_stock, ougcinvitesystem_form_expire, ougcinvitesystem_form_multiple, ougcinvitesystem_form_users, ougcinvitesystem_form_points, ougcinvitesystem_form, ougcinvitesystem_content, ougcinvitesystem_userControlPanel, ougcinvitesystem_moderatorControlPanel, ougcinvitesystem_modcp_nav, ougcinvitesystem_filter_username, ougcinvitesystem_content_empty,ougcinvitesystem_current';
         }
     }
 
@@ -112,9 +112,11 @@ function usercp_start(): bool
 
 function modcp_start(): bool
 {
-    global $mybb, $lang, $plugins, $db;
+    global $mybb, $lang, $plugins, $db, $plugins;
     global $headerinclude, $header, $theme, $footer, $gobutton;
     global $modcp_nav, $usercpnav;
+
+    $isUserControlPanel = $plugins->current_hook === 'usercp_start';
 
     languageLoad();
 
@@ -663,7 +665,7 @@ function modcp_start(): bool
         $status = $lang->ougc_invite_system_usercp_form_inactive;
     }
 
-    $codesList = $pointsColumn = '';
+    $codesList = $pointsColumn = $multipage = '';
 
     if ($totalCodes) {
         $perPage = (int)getSetting('perpage');
@@ -952,7 +954,11 @@ function modcp_start(): bool
         $content = eval(getTemplate('content'));
     }
 
-    $page = eval(getTemplate());
+    if ($isUserControlPanel) {
+        $page = eval(getTemplate('userControlPanel'));
+    } else {
+        $page = eval(getTemplate('moderatorControlPanel'));
+    }
 
     output_page($page);
 
